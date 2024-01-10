@@ -1,0 +1,55 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
+enum Color {
+    RED, YELLOW, GREEN
+}
+
+class TrafficLight{
+    private Color curcol;
+    public TrafficLight(){
+        curcol=Color.GREEN; //Initial state
+    }
+    
+    public void switchingstates() {
+        switch (curcol) {
+            case RED:
+                curcol = Color.YELLOW;
+                break;
+            case YELLOW:
+                curcol = Color.GREEN;
+                break;
+            case GREEN:
+                curcol = Color.RED;
+                break;
+        }
+    }
+    public Color getCurrentColor(){
+        return curcol;
+    }
+}
+
+class Controller{
+    private TrafficLight l;
+    public Controller(TrafficLight Light){
+        l=Light;
+    }
+    public void simulateTrafficLight(){
+        Timer t=new Timer();
+        t.scheduleAtFixedRate(new TimerTask() {
+            
+            public void run() {
+                l.switchingstates();
+                System.out.println("Current state: " + l.getCurrentColor());
+            }
+        },0,3000);
+    }
+}
+
+public class Main{
+    public static void main(String args[]){
+        TrafficLight trafficlight=new TrafficLight();
+        Controller c=new Controller(trafficlight);
+        c.simulateTrafficLight();
+    }
+}
