@@ -1,0 +1,135 @@
+//TODOLIST
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Noshack {
+	private ArrayList<String> list;
+	public Noshack() {
+		 list =new ArrayList<String>();
+	}
+	
+	public void add(String task) {
+		list.add(task);
+	}
+	public void delete(int index) {
+		list.remove(index);
+	}
+	public void displaytasks() {
+		if(list.size()==0) {
+			System.out.println("NO TASKS ARE THERE CURRENTLY,PLEASE ENTER A TASK");
+		}
+		else {
+			
+		
+		System.out.println("Tasks in NOSHACK list are:");
+		for(int i=0;i<list.size();i++) {
+			System.out.println(i+":"+list.get(i));
+		}
+		}
+	}
+	
+	
+}
+class Rec {
+	private ArrayList<String> l;
+	public Rec() {
+		 l =new ArrayList<String>();
+	}
+	
+	public void add(String task) {
+		l.add(task);
+	}
+	public void delete(int index) {
+		l.remove(index);
+	}
+	public void displaytasks() {
+		if(l.size()==0) {
+			System.out.println("NO TASKS ARE THERE CURRENTLY,PLEASE ENTER A TASK");
+		}
+		else {
+			
+		
+		System.out.println("Tasks in REC list are:");
+		for(int i=0;i<l.size();i++) {
+			System.out.println(i+":"+l.get(i));
+		}
+		}
+	}
+}
+public class Main {
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		Noshack n=new Noshack();
+		Rec r=new Rec();
+		while (true) {
+		System.out.println("ENTER CATEGORY(NOSHACK/REC) \n");
+		String s=sc.next();
+		if(s.equals("NOSHACK")) {
+			System.out.println("NO shack category is opened");
+			
+			System.out.println("select the commands \n 1.Insert \n 2.Delete \n 3.Display \n 4.Exit");
+			int c=sc.nextInt();
+			if(c==1) {
+				System.out.println("Enter the task:\n");
+				String t=sc.next();
+				n.add(t);
+				System.out.println(t+" task in inserted");
+			}
+			else if(c==2) {
+				n.displaytasks();
+				System.out.println("Enter the index to delete:");
+				int ind=sc.nextInt();
+				n.delete(ind);
+				System.out.println("task is deleted");
+			}
+			else if(c==3) {
+				System.out.println("Tasks in noshack category are: \n");
+				n.displaytasks();
+			}
+			else if(c==4) {
+				System.out.println("exit");
+				break;
+			}
+			else {
+				System.out.println("invalid,enter correct  number");
+			}
+			
+		}
+		
+		else if(s.equals("REC")) {
+			System.out.println("REC category is opened");
+	
+			System.out.println("select the commands \n 1.Insert \n 2.Delete \n 3.Display \n 4.Exit");
+			int c=sc.nextInt();
+			if(c==1) {
+				System.out.println("Enter the task:\n");
+				String t=sc.next();
+				r.add(t);
+				System.out.println(t+" task in inserted !");
+			}
+			else if(c==2) {
+				r.displaytasks();
+				System.out.println("Enter the index to delete:");
+				int ind=sc.nextInt();
+				r.delete(ind);
+				System.out.println("task is deleted");
+			}
+			else if(c==3) {
+				System.out.println("Tasks in rec category are: \n");
+				r.displaytasks();
+			}
+			else if(c==4) {
+				System.out.println("exit");
+				break;
+			}
+			else {
+				System.out.println("invalid,enter correct  number");
+			}
+		}
+		
+		else {
+			System.out.println("Enter correct category!");
+		}
+	}
+	}
+}
